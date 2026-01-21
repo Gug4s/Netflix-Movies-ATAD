@@ -1,3 +1,4 @@
+
 public class SortedList<T extends Comparable<T>> implements MyList<T> {
     private Node<T> head;
     private int size;
@@ -14,14 +15,12 @@ public class SortedList<T extends Comparable<T>> implements MyList<T> {
         if (head == null || element.compareTo(head.data) < 0) {
             newNode.next = head;
             head = newNode;
-        } 
-        else 
-        {
-
+        } else {
             Node<T> current = head;
             while (current.next != null && element.compareTo(current.next.data) > 0) {
                 current = current.next;
             }
+            // Inserir após o node current
             newNode.next = current.next;
             current.next = newNode;
         }
@@ -32,6 +31,7 @@ public class SortedList<T extends Comparable<T>> implements MyList<T> {
     public boolean remove(T element) {
         if (head == null) return false;
 
+        // Remover da cabeça
         if (head.data.equals(element)) {
             head = head.next;
             size--;
@@ -54,12 +54,18 @@ public class SortedList<T extends Comparable<T>> implements MyList<T> {
     @Override
     public T get(int index) {
         if (index < 0 || index >= size) return null;
-        
         Node<T> current = head;
+        // Percorre a lista manualmente
         for (int i = 0; i < index; i++) {
             current = current.next;
         }
         return current.data;
+    }
+
+    @Override
+    public void clear() {
+        head = null;
+        size = 0;
     }
 
     @Override
