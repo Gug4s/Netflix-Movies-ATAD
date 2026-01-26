@@ -1,9 +1,9 @@
 /**
  * Representa um nó genérico numa lista ligada.
  * Contém o dado armazenado e uma referência para o próximo nó.
- * * @param <T> O tipo de dado armazenado no nó.
- * @author Simão Ferreira
- * @version 1.0
+ * @param <T> O tipo de dado armazenado no nó.
+ * @author Simão Ferreira / Miguel Eusébio
+ * @version 1.1
  */
 public class Node<T> {
     

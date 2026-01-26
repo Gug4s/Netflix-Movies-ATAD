@@ -1,11 +1,11 @@
 /**
- * Interface que define o Tipo Abstrato de Dados (ADT) List.
- * Permite adicionar, remover e aceder a elementos.
+ * Interface que define o contrato para o Tipo Abstrato de Dados (ADT) List.
+ * Permite adicionar, remover e aceder a elementos de forma abstrata.
  * * @param <T> O tipo de dados a ser armazenado na lista.
- * @author Simão Ferreira
- * @version 1.0
+ * @author Simão Ferreira / Miguel Eusébio
+ * @version 1.1
  */
-public interface MyList<T> {
+public interface List<T> {
 
     /**
      * Adiciona um elemento à lista.
@@ -21,8 +21,8 @@ public interface MyList<T> {
     boolean remove(T element);
 
     /**
-     * Devolve o número de elementos na lista.
-     * @return O tamanho atual da lista.
+     * Devolve o número de elementos atualmente na lista.
+     * @return O tamanho da lista.
      */
     int size();
 
@@ -34,13 +34,13 @@ public interface MyList<T> {
 
     /**
      * Obtém o elemento numa posição específica.
-     * @param index O índice do elemento (começa no 0).
+     * @param index O índice do elemento.
      * @return O elemento na posição indicada ou null se o índice for inválido.
      */
     T get(int index);
 
     /**
-     * Remove todos os elementos da lista.
+     * Remove todos os elementos da lista, deixando-a vazia.
      */
     void clear();
 }

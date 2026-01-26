@@ -4,11 +4,11 @@
  * * Esta implementação utiliza uma lista simplesmente ligada.
  * * @param <T> O tipo de dados (deve implementar Comparable).
  * @author Simão Ferreira / Miguel Eusébio
- * @version 1.0
+ * @version 1.1
  */
-public class SortedList<T extends Comparable<T>> implements MyList<T> {
+public class SortedList<T extends Comparable<T>> implements List<T> {
     
-    /** Referência para o primeiro nó da lista (cabeça). */
+    /** Referência para o primeiro nó da lista. */
     private Node<T> head;
     
     /** Contador do número de elementos na lista. */
@@ -24,25 +24,24 @@ public class SortedList<T extends Comparable<T>> implements MyList<T> {
 
     /**
      * Insere um elemento na lista mantendo a ordem crescente.
-     * Percorre a lista até encontrar a posição correta de inserção comparando
-     * o novo elemento com os existentes.
+     * Percorre a lista até encontrar a posição correta de inserção.
      * * @param element O elemento a adicionar.
      */
     @Override
     public void add(T element) {
         Node<T> newNode = new Node<>(element);
         
-        // Caso 1: Inserir no início (lista vazia ou elemento menor que a cabeça)
+        // Caso 1: Inserir no início.
         if (head == null || element.compareTo(head.data) < 0) {
             newNode.next = head;
             head = newNode;
         } else {
-            // Caso 2: Procurar a posição correta no meio/fim
+            // Caso 2: Procurar a posição correta no meio/fim.
             Node<T> current = head;
             while (current.next != null && element.compareTo(current.next.data) > 0) {
                 current = current.next;
             }
-            // Inserir após o nó current
+            // Inserir após o nó current.
             newNode.next = current.next;
             current.next = newNode;
         }
@@ -51,7 +50,6 @@ public class SortedList<T extends Comparable<T>> implements MyList<T> {
 
     /**
      * Remove a primeira ocorrência do elemento especificado.
-     * * @param element O elemento a remover.
      * @return true se encontrou e removeu o elemento, false caso contrário.
      */
     @Override
@@ -80,15 +78,12 @@ public class SortedList<T extends Comparable<T>> implements MyList<T> {
 
     /**
      * Obtém o elemento numa posição específica percorrendo a lista.
-     * Nota: Como é uma lista ligada, esta operação é O(n).
-     * * @param index O índice do elemento.
      * @return O elemento na posição ou null se índice inválido.
      */
     @Override
     public T get(int index) {
         if (index < 0 || index >= size) return null;
         Node<T> current = head;
-        // Percorre a lista manualmente sem iteradores
         for (int i = 0; i < index; i++) {
             current = current.next;
         }
@@ -96,7 +91,7 @@ public class SortedList<T extends Comparable<T>> implements MyList<T> {
     }
 
     /**
-     * Limpa a lista ao remover todos os elementos.
+     * Limpa a lista removendo todos os elementos.
      */
     @Override
     public void clear() {
@@ -104,17 +99,9 @@ public class SortedList<T extends Comparable<T>> implements MyList<T> {
         size = 0;
     }
 
-    /**
-     * Devolve o tamanho atual da lista.
-     * @return O número de elementos.
-     */
     @Override
     public int size() { return size; }
 
-    /**
-     * Verifica se a lista está vazia.
-     * @return true se size == 0.
-     */
     @Override
     public boolean isEmpty() { return size == 0; }
 }
